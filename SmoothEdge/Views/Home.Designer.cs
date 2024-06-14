@@ -28,134 +28,169 @@
         /// </summary>
         private void InitializeComponent()
         {
-            tabControl = new TabControl();
-            tabScreen01 = new TabPage();
-            labelAddedWnd = new Label();
-            labelWnds = new Label();
-            listBoxWindowsAdded = new ListBox();
-            btnRemoveWnd = new Button();
-            listBoxWindows = new ListBox();
-            btnAddWnd = new Button();
-            tabControl.SuspendLayout();
-            tabScreen01.SuspendLayout();
+            TabControl = new TabControl();
+            TabScreen01 = new TabPage();
+            BtnRemoveBorder = new Button();
+            BtnReloadWindows = new Button();
+            LabelAddedWindows = new Label();
+            LabelWindows = new Label();
+            ListBoxAddedWindows = new ListBox();
+            BtnRemoveWindow = new Button();
+            ListBoxWindows = new ListBox();
+            BtnAddWindow = new Button();
+            TabControl.SuspendLayout();
+            TabScreen01.SuspendLayout();
             SuspendLayout();
             // 
-            // tabControl
+            // TabControl
             // 
-            tabControl.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            tabControl.Controls.Add(tabScreen01);
-            tabControl.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
-            tabControl.Location = new Point(11, 18);
-            tabControl.MaximumSize = new Size(1160, 720);
-            tabControl.MinimumSize = new Size(1160, 720);
-            tabControl.Name = "tabControl";
-            tabControl.SelectedIndex = 0;
-            tabControl.Size = new Size(1160, 720);
-            tabControl.TabIndex = 0;
+            TabControl.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            TabControl.Controls.Add(TabScreen01);
+            TabControl.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            TabControl.Location = new Point(11, 18);
+            TabControl.MaximumSize = new Size(1160, 720);
+            TabControl.MinimumSize = new Size(1160, 720);
+            TabControl.Name = "TabControl";
+            TabControl.SelectedIndex = 0;
+            TabControl.Size = new Size(1160, 720);
+            TabControl.TabIndex = 0;
             // 
-            // tabScreen01
+            // TabScreen01
             // 
-            tabScreen01.BackColor = Color.White;
-            tabScreen01.Controls.Add(labelAddedWnd);
-            tabScreen01.Controls.Add(labelWnds);
-            tabScreen01.Controls.Add(listBoxWindowsAdded);
-            tabScreen01.Controls.Add(btnRemoveWnd);
-            tabScreen01.Controls.Add(listBoxWindows);
-            tabScreen01.Controls.Add(btnAddWnd);
-            tabScreen01.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
-            tabScreen01.Location = new Point(4, 37);
-            tabScreen01.Name = "tabScreen01";
-            tabScreen01.Padding = new Padding(3);
-            tabScreen01.Size = new Size(1152, 679);
-            tabScreen01.TabIndex = 0;
-            tabScreen01.Text = "Home";
+            TabScreen01.BackColor = Color.White;
+            TabScreen01.BorderStyle = BorderStyle.Fixed3D;
+            TabScreen01.Controls.Add(BtnRemoveBorder);
+            TabScreen01.Controls.Add(BtnReloadWindows);
+            TabScreen01.Controls.Add(LabelAddedWindows);
+            TabScreen01.Controls.Add(LabelWindows);
+            TabScreen01.Controls.Add(ListBoxAddedWindows);
+            TabScreen01.Controls.Add(BtnRemoveWindow);
+            TabScreen01.Controls.Add(ListBoxWindows);
+            TabScreen01.Controls.Add(BtnAddWindow);
+            TabScreen01.Font = new Font("Segoe UI", 12F, FontStyle.Regular, GraphicsUnit.Point, 0);
+            TabScreen01.Location = new Point(4, 37);
+            TabScreen01.Name = "TabScreen01";
+            TabScreen01.Padding = new Padding(3);
+            TabScreen01.Size = new Size(1152, 679);
+            TabScreen01.TabIndex = 0;
+            TabScreen01.Text = "Home";
             // 
-            // labelAddedWnd
+            // BtnRemoveBorder
             // 
-            labelAddedWnd.AutoSize = true;
-            labelAddedWnd.Location = new Point(721, 111);
-            labelAddedWnd.Name = "labelAddedWnd";
-            labelAddedWnd.Size = new Size(185, 28);
-            labelAddedWnd.TabIndex = 5;
-            labelAddedWnd.Text = "Janelas Adicionadas";
+            BtnRemoveBorder.BackColor = Color.LightGreen;
+            BtnRemoveBorder.FlatStyle = FlatStyle.System;
+            BtnRemoveBorder.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnRemoveBorder.Location = new Point(214, 15);
+            BtnRemoveBorder.Name = "BtnRemoveBorder";
+            BtnRemoveBorder.Size = new Size(188, 46);
+            BtnRemoveBorder.TabIndex = 7;
+            BtnRemoveBorder.Text = "Remover Bordas";
+            BtnRemoveBorder.UseVisualStyleBackColor = false;
+            BtnRemoveBorder.Click += BtnRemoveBorder_Click;
             // 
-            // labelWnds
+            // BtnReloadWindows
             // 
-            labelWnds.AutoSize = true;
-            labelWnds.Location = new Point(25, 111);
-            labelWnds.Name = "labelWnds";
-            labelWnds.Size = new Size(73, 28);
-            labelWnds.TabIndex = 4;
-            labelWnds.Text = "Janelas";
+            BtnReloadWindows.BackColor = Color.LightGreen;
+            BtnReloadWindows.FlatStyle = FlatStyle.System;
+            BtnReloadWindows.Font = new Font("Segoe UI Semibold", 12F, FontStyle.Bold, GraphicsUnit.Point, 0);
+            BtnReloadWindows.Location = new Point(11, 15);
+            BtnReloadWindows.Name = "BtnReloadWindows";
+            BtnReloadWindows.Size = new Size(188, 46);
+            BtnReloadWindows.TabIndex = 6;
+            BtnReloadWindows.Text = "Recaregar Janelas";
+            BtnReloadWindows.UseVisualStyleBackColor = false;
+            BtnReloadWindows.Click += BtnReloadWindows_Click;
             // 
-            // listBoxWindowsAdded
+            // LabelAddedWindows
             // 
-            listBoxWindowsAdded.FormattingEnabled = true;
-            listBoxWindowsAdded.ItemHeight = 28;
-            listBoxWindowsAdded.Location = new Point(721, 145);
-            listBoxWindowsAdded.Name = "listBoxWindowsAdded";
-            listBoxWindowsAdded.Size = new Size(425, 508);
-            listBoxWindowsAdded.TabIndex = 3;
+            LabelAddedWindows.AutoSize = true;
+            LabelAddedWindows.Location = new Point(707, 124);
+            LabelAddedWindows.Name = "LabelAddedWindows";
+            LabelAddedWindows.Size = new Size(185, 28);
+            LabelAddedWindows.TabIndex = 5;
+            LabelAddedWindows.Text = "Janelas Adicionadas";
             // 
-            // btnRemoveWnd
+            // LabelWindows
             // 
-            btnRemoveWnd.BackColor = Color.LightCoral;
-            btnRemoveWnd.FlatStyle = FlatStyle.System;
-            btnRemoveWnd.Font = new Font("Segoe UI", 25.8000011F, FontStyle.Bold);
-            btnRemoveWnd.Location = new Point(661, 397);
-            btnRemoveWnd.Name = "btnRemoveWnd";
-            btnRemoveWnd.Size = new Size(54, 150);
-            btnRemoveWnd.TabIndex = 2;
-            btnRemoveWnd.Text = "<";
-            btnRemoveWnd.UseVisualStyleBackColor = false;
+            LabelWindows.AutoSize = true;
+            LabelWindows.Location = new Point(11, 124);
+            LabelWindows.Name = "LabelWindows";
+            LabelWindows.Size = new Size(73, 28);
+            LabelWindows.TabIndex = 4;
+            LabelWindows.Text = "Janelas";
             // 
-            // listBoxWindows
+            // ListBoxAddedWindows
             // 
-            listBoxWindows.FormattingEnabled = true;
-            listBoxWindows.ItemHeight = 28;
-            listBoxWindows.Location = new Point(25, 145);
-            listBoxWindows.Name = "listBoxWindows";
-            listBoxWindows.Size = new Size(629, 508);
-            listBoxWindows.TabIndex = 1;
+            ListBoxAddedWindows.FormattingEnabled = true;
+            ListBoxAddedWindows.ItemHeight = 28;
+            ListBoxAddedWindows.Location = new Point(707, 158);
+            ListBoxAddedWindows.Name = "ListBoxAddedWindows";
+            ListBoxAddedWindows.Size = new Size(425, 508);
+            ListBoxAddedWindows.TabIndex = 3;
             // 
-            // btnAddWnd
+            // BtnRemoveWindow
             // 
-            btnAddWnd.BackColor = Color.LightGreen;
-            btnAddWnd.FlatStyle = FlatStyle.System;
-            btnAddWnd.Font = new Font("Segoe UI", 25.8000011F, FontStyle.Bold);
-            btnAddWnd.Location = new Point(661, 241);
-            btnAddWnd.Name = "btnAddWnd";
-            btnAddWnd.Size = new Size(54, 150);
-            btnAddWnd.TabIndex = 0;
-            btnAddWnd.Text = ">";
-            btnAddWnd.UseVisualStyleBackColor = false;
+            BtnRemoveWindow.BackColor = Color.LightCoral;
+            BtnRemoveWindow.FlatStyle = FlatStyle.System;
+            BtnRemoveWindow.Font = new Font("Segoe UI", 25.8000011F, FontStyle.Bold);
+            BtnRemoveWindow.Location = new Point(647, 410);
+            BtnRemoveWindow.Name = "BtnRemoveWindow";
+            BtnRemoveWindow.Size = new Size(54, 150);
+            BtnRemoveWindow.TabIndex = 2;
+            BtnRemoveWindow.Text = "<";
+            BtnRemoveWindow.UseVisualStyleBackColor = false;
+            BtnRemoveWindow.Click += BtnRemoveWindow_Click;
+            // 
+            // ListBoxWindows
+            // 
+            ListBoxWindows.FormattingEnabled = true;
+            ListBoxWindows.ItemHeight = 28;
+            ListBoxWindows.Location = new Point(11, 158);
+            ListBoxWindows.Name = "ListBoxWindows";
+            ListBoxWindows.Size = new Size(629, 508);
+            ListBoxWindows.TabIndex = 1;
+            // 
+            // BtnAddWindow
+            // 
+            BtnAddWindow.BackColor = Color.LightGreen;
+            BtnAddWindow.FlatStyle = FlatStyle.System;
+            BtnAddWindow.Font = new Font("Segoe UI", 25.8000011F, FontStyle.Bold);
+            BtnAddWindow.Location = new Point(647, 254);
+            BtnAddWindow.Name = "BtnAddWindow";
+            BtnAddWindow.Size = new Size(54, 150);
+            BtnAddWindow.TabIndex = 0;
+            BtnAddWindow.Text = ">";
+            BtnAddWindow.UseVisualStyleBackColor = false;
+            BtnAddWindow.Click += BtnAddWindow_Click;
             // 
             // Home
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(1182, 753);
-            Controls.Add(tabControl);
+            Controls.Add(TabControl);
             MaximumSize = new Size(1200, 800);
             MinimumSize = new Size(1200, 800);
             Name = "Home";
             StartPosition = FormStartPosition.CenterScreen;
             Text = "Home";
-            tabControl.ResumeLayout(false);
-            tabScreen01.ResumeLayout(false);
-            tabScreen01.PerformLayout();
+            TabControl.ResumeLayout(false);
+            TabScreen01.ResumeLayout(false);
+            TabScreen01.PerformLayout();
             ResumeLayout(false);
         }
 
         #endregion
 
-        private TabControl tabControl;
-        private TabPage tabScreen01;
-        private Button btnAddWnd;
-        private Button btnRemoveWnd;
-        private ListBox listBoxWindows;
-        private ListBox listBoxWindowsAdded;
-        private Label labelAddedWnd;
-        private Label labelWnds;
+        private TabControl TabControl;
+        private TabPage TabScreen01;
+        private Button BtnAddWindow;
+        private Button BtnRemoveWindow;
+        private ListBox ListBoxWindows;
+        private ListBox ListBoxAddedWindows;
+        private Label LabelAddedWindows;
+        private Label LabelWindows;
+        private Button BtnReloadWindows;
+        private Button BtnRemoveBorder;
     }
 }
