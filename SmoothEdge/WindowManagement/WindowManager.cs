@@ -4,15 +4,14 @@ namespace SmoothEdge.WindowManagement
 {
     internal class WindowManager
     {
-
-        public List<IntPtr> GetOpenWindows()
+        public static List<IntPtr> GetOpenWindows()
         {
-            List<IntPtr> openWindows = new List<IntPtr>();
+            List<IntPtr> openWindows = [];
             WindowHelper.EnumWindows(delegate (IntPtr hWnd, IntPtr lParam)
             {
                 if (WindowHelper.IsWindowVisible(hWnd))
                 {
-                    StringBuilder sb = new StringBuilder(256);
+                    StringBuilder sb = new(256);
                     WindowHelper.GetWindowText(hWnd, sb, sb.Capacity);
                     if (sb.Length > 0)
                     {
@@ -24,9 +23,9 @@ namespace SmoothEdge.WindowManagement
             return openWindows;
         }
 
-        public List<string> GetOpenWindowTitles(List<IntPtr> windows)
+        public static List<string> GetOpenWindowTitles(List<IntPtr> windows)
         {
-            List<string> titles = new List<string>();
+            List<string> titles = [];
             foreach (var window in windows)
             {
                 StringBuilder sb = new StringBuilder(256);
@@ -36,35 +35,26 @@ namespace SmoothEdge.WindowManagement
             return titles;
         }
 
-        public void ArrangeWindows(IntPtr window1, IntPtr window2, bool horizontal)
+        public static string GetWindowTitle(IntPtr hWnd)
         {
-            RECT rect;
-            WindowHelper.GetWindowRect(WindowHelper.GetForegroundWindow(), out rect);
-            int screenWidth = rect.Right - rect.Left;
-            int screenHeight = rect.Bottom - rect.Top;
-
-            if (horizontal)
-            {
-                WindowHelper.MoveWindow(window1, 0, 0, screenWidth / 2, screenHeight, true);
-                WindowHelper.MoveWindow(window2, screenWidth / 2, 0, screenWidth / 2, screenHeight, true);
-            } else
-            {
-                WindowHelper.MoveWindow(window1, 0, 0, screenWidth, screenHeight / 2, true);
-                WindowHelper.MoveWindow(window2, 0, screenHeight / 2, screenWidth, screenHeight / 2, true);
-            }
-
-            RemoveWindowBorder(window1);
-            RemoveWindowBorder(window2);
-
-            WindowHelper.SetForegroundWindow(window1);
+            StringBuilder sb = new(256);
+            WindowHelper.GetWindowText(hWnd, sb, sb.Capacity);
+            return sb.ToString();
         }
 
-        private void RemoveWindowBorder(IntPtr hWnd)
+        public static uint GetWindowProcessId(IntPtr hWnd)
         {
-            int style = WindowHelper.GetWindowLong(hWnd, WindowHelper.GWL_STYLE);
+            WindowHelper.GetWindowThreadProcessId(hWnd, out uint processId);
+            return processId;
+        }
+
+        public static void RemoveWindowBorder(IntPtr hWnd)
+        {
+            nint style = WindowHelper.GetWindowLong(hWnd, WindowHelper.GWL_STYLE);
             style &= ~WindowHelper.WS_CAPTION;
             WindowHelper.SetWindowLong(hWnd, WindowHelper.GWL_STYLE, style);
-            WindowHelper.SetWindowPos(hWnd, IntPtr.Zero, 0, 0, 0, 0, WindowHelper.SWP_NOSIZE | WindowHelper.SWP_NOMOVE | WindowHelper.SWP_NOZORDER | WindowHelper.SWP_FRAMECHANGED);
+            WindowHelper.SetWindowPos(hWnd, IntPtr.Zero, 0, 0, 0, 0, 
+                WindowHelper.SWP_NOSIZE | WindowHelper.SWP_NOMOVE | WindowHelper.SWP_NOZORDER | WindowHelper.SWP_FRAMECHANGED);
         }
     }
 }
