@@ -1,3 +1,5 @@
+using SmoothEdge.Views;
+
 namespace SmoothEdge
 {
     internal static class Program
