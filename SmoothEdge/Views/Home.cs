@@ -57,7 +57,7 @@ namespace SmoothEdge.Views
 
             if (index == -1)
             {
-                MessageBox.Show("Select a window first.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Select a window first.", "Error Adding Window", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -70,7 +70,7 @@ namespace SmoothEdge.Views
 
             if (index == -1)
             {
-                MessageBox.Show("Select a window first.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Select a window first.", "Error Removing Window", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -91,33 +91,20 @@ namespace SmoothEdge.Views
 
         private void BtnRemoveBorder_Click(object sender, EventArgs e)
         {
-            var index = ListBoxAddedWindows.SelectedIndex;
+            var addedItems = ListBoxAddedWindows.Items.OfType<string>().ToList();
 
-            if (index == -1)
+            if (addedItems.Count == 0)
             {
-                MessageBox.Show("Select a window first.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("It must be one or more windows to remove the border.", "Error Removing Border", 
+                    MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
-            var item = ListBoxAddedWindows.Items[index].ToString();
+            var processIds = addedItems.Select(x => ExtractProcessId(x)).ToList();
 
-            if (string.IsNullOrWhiteSpace(item))
-            {
-                MessageBox.Show("Select a window first.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+            var windowsToModify = windows.Where(window => processIds.Contains(WindowManager.GetWindowProcessId(window))).ToList();
 
-            var processId = ExtractProcessId(item);
-
-            var window = windows.Find(w => WindowManager.GetWindowProcessId(w) == processId);
-            
-            if (window == IntPtr.Zero)
-            {
-                MessageBox.Show($"Window with process ID {processId} not found.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-
-            WindowManager.RemoveWindowBorder(window);
+            windowsToModify.ForEach(wnd => WindowManager.RemoveWindowBorder(wnd));
         }
 
 
