@@ -84,7 +84,7 @@
             BtnRemoveBorder.Name = "BtnRemoveBorder";
             BtnRemoveBorder.Size = new Size(188, 46);
             BtnRemoveBorder.TabIndex = 7;
-            BtnRemoveBorder.Text = "Remover Bordas";
+            BtnRemoveBorder.Text = "Remove Borders";
             BtnRemoveBorder.UseVisualStyleBackColor = false;
             BtnRemoveBorder.Click += BtnRemoveBorder_Click;
             // 
@@ -97,7 +97,7 @@
             BtnReloadWindows.Name = "BtnReloadWindows";
             BtnReloadWindows.Size = new Size(188, 46);
             BtnReloadWindows.TabIndex = 6;
-            BtnReloadWindows.Text = "Recaregar Janelas";
+            BtnReloadWindows.Text = "Reload Windows";
             BtnReloadWindows.UseVisualStyleBackColor = false;
             BtnReloadWindows.Click += BtnReloadWindows_Click;
             // 
@@ -108,16 +108,16 @@
             LabelAddedWindows.Name = "LabelAddedWindows";
             LabelAddedWindows.Size = new Size(185, 28);
             LabelAddedWindows.TabIndex = 5;
-            LabelAddedWindows.Text = "Janelas Adicionadas";
+            LabelAddedWindows.Text = "Windows to Modify";
             // 
             // LabelWindows
             // 
             LabelWindows.AutoSize = true;
             LabelWindows.Location = new Point(11, 124);
             LabelWindows.Name = "LabelWindows";
-            LabelWindows.Size = new Size(73, 28);
+            LabelWindows.Size = new Size(93, 28);
             LabelWindows.TabIndex = 4;
-            LabelWindows.Text = "Janelas";
+            LabelWindows.Text = "Windows";
             // 
             // ListBoxAddedWindows
             // 
